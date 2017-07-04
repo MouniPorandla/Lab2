@@ -76,11 +76,14 @@ public final class NetworkUtils {
                 .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
                 .build();
 
+
         URL url = null;
         try {
             url = new URL(builtUri.toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+        }
+        catch (MalformedURLException k)
+        {
+            k.printStackTrace();
         }
 
         Log.v(TAG, "Built URI " + url);
@@ -117,10 +120,13 @@ public final class NetworkUtils {
             scanner.useDelimiter("\\A");
 
             boolean hasInput = scanner.hasNext();
-            if (hasInput) {
-                return scanner.next();
-            } else {
+            if (!hasInput)
+            {
                 return null;
+
+            } else
+            {
+                return scanner.next();
             }
         } finally {
             urlConnection.disconnect();
